@@ -1,20 +1,23 @@
-const express = require("express");
-const path = require("path");
-const app = express();
+const express = require("express")
+const app = express()
+const path = require("path")
+//const port= process.env.port || 4000
+//const host = process.env.host || "localhost"
 
-app.listen(process.env.PORT || 3000);
+app.use (express.static(path.resolve(__dirname, "./public")))
 
-const staticFolder = path.resolve(__dirname, "./public");
-app.use(express.static(staticFolder));
+app.get("/", (req,res) => {
+    res.sendFile(path.resolve(__dirname, "./view/home.html"))
+})
 
-app.get('/',(req,res) => {
-    res.sendFile(path.resolve(__dirname,'./views/home.html'))
-});
+app.get("/register", (req,res) => {
+    res.sendFile(path.resolve(__dirname, "./view/register.html"))
+})
 
-app.get("/login", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "./views/login.html"));
-  });
+app.get("/login", (req,res) => {
+    res.sendFile(path.resolve(__dirname, "./view/login.html"))
+})
 
-app.get("/register", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "./views/register.html"));
-  });
+app.listen(3000, () => {
+    console.log("servidor corriendo en http://localhost:3000")
+})
