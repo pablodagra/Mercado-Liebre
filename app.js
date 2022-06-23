@@ -7,9 +7,7 @@ app.use(express.static(staticFolder));
 
 const PORT = process.env.PORT || 4000;
 const HOST = process.env.HOST || 'localhost';
-app.listen(PORT, ()=>{
-  console.log('server running at http://${PORT}:${HOST}/');
-});
+
 
 app.get('/',(req,res) => {
     res.sendFile(path.resolve(__dirname,'./views/home.html'))
@@ -21,4 +19,7 @@ app.get("/login", (req, res) => {
 
 app.get("/register", (req, res) => {
     res.sendFile(path.resolve(__dirname, "./views/register.html"));
+  });
+  app.listen(PORT, ()=>{
+    console.log('server running at http://${PORT}:${HOST}/');
   });
