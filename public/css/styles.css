@@ -114,6 +114,7 @@ main {
 
 h1 {
   font-size: 24px;
+  text-align: center;
 }
 
 .precio {
@@ -246,7 +247,8 @@ h4 {
   }
 
   .copy {
-    display: flex;
+    
+    text-align: center;
   }
 
   section {
